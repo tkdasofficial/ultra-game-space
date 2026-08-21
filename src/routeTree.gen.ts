@@ -14,6 +14,7 @@ import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as SettingsIndexRouteImport } from './routes/settings.index'
 import { Route as SettingsDisplayRouteImport } from './routes/settings.display'
 import { Route as SettingsNotificationRouteImport } from './routes/settings.notification'
+import { Route as SettingsRecordingRouteImport } from './routes/settings.recording'
 import { Route as SettingsSoundRouteImport } from './routes/settings.sound'
 import { Route as SettingsVibrationRouteImport } from './routes/settings.vibration'
 
@@ -42,6 +43,11 @@ const SettingsNotificationRoute = SettingsNotificationRouteImport.update({
   path: '/notification',
   getParentRoute: () => SettingsRoute,
 } as any)
+const SettingsRecordingRoute = SettingsRecordingRouteImport.update({
+  id: '/recording',
+  path: '/recording',
+  getParentRoute: () => SettingsRoute,
+} as any)
 const SettingsSoundRoute = SettingsSoundRouteImport.update({
   id: '/sound',
   path: '/sound',
@@ -58,6 +64,7 @@ export interface FileRoutesByFullPath {
   '/settings': typeof SettingsRouteWithChildren
   '/settings/display': typeof SettingsDisplayRoute
   '/settings/notification': typeof SettingsNotificationRoute
+  '/settings/recording': typeof SettingsRecordingRoute
   '/settings/sound': typeof SettingsSoundRoute
   '/settings/vibration': typeof SettingsVibrationRoute
   '/settings/': typeof SettingsIndexRoute
@@ -66,6 +73,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/settings/display': typeof SettingsDisplayRoute
   '/settings/notification': typeof SettingsNotificationRoute
+  '/settings/recording': typeof SettingsRecordingRoute
   '/settings/sound': typeof SettingsSoundRoute
   '/settings/vibration': typeof SettingsVibrationRoute
   '/settings': typeof SettingsIndexRoute
@@ -76,6 +84,7 @@ export interface FileRoutesById {
   '/settings': typeof SettingsRouteWithChildren
   '/settings/display': typeof SettingsDisplayRoute
   '/settings/notification': typeof SettingsNotificationRoute
+  '/settings/recording': typeof SettingsRecordingRoute
   '/settings/sound': typeof SettingsSoundRoute
   '/settings/vibration': typeof SettingsVibrationRoute
   '/settings/': typeof SettingsIndexRoute
@@ -87,6 +96,7 @@ export interface FileRouteTypes {
     | '/settings'
     | '/settings/display'
     | '/settings/notification'
+    | '/settings/recording'
     | '/settings/sound'
     | '/settings/vibration'
     | '/settings/'
@@ -95,6 +105,7 @@ export interface FileRouteTypes {
     | '/'
     | '/settings/display'
     | '/settings/notification'
+    | '/settings/recording'
     | '/settings/sound'
     | '/settings/vibration'
     | '/settings'
@@ -104,6 +115,7 @@ export interface FileRouteTypes {
     | '/settings'
     | '/settings/display'
     | '/settings/notification'
+    | '/settings/recording'
     | '/settings/sound'
     | '/settings/vibration'
     | '/settings/'
@@ -151,6 +163,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SettingsNotificationRouteImport
       parentRoute: typeof SettingsRoute
     }
+    '/settings/recording': {
+      id: '/settings/recording'
+      path: '/recording'
+      fullPath: '/settings/recording'
+      preLoaderRoute: typeof SettingsRecordingRouteImport
+      parentRoute: typeof SettingsRoute
+    }
     '/settings/sound': {
       id: '/settings/sound'
       path: '/sound'
@@ -171,6 +190,7 @@ declare module '@tanstack/react-router' {
 interface SettingsRouteChildren {
   SettingsDisplayRoute: typeof SettingsDisplayRoute
   SettingsNotificationRoute: typeof SettingsNotificationRoute
+  SettingsRecordingRoute: typeof SettingsRecordingRoute
   SettingsSoundRoute: typeof SettingsSoundRoute
   SettingsVibrationRoute: typeof SettingsVibrationRoute
   SettingsIndexRoute: typeof SettingsIndexRoute
@@ -179,6 +199,7 @@ interface SettingsRouteChildren {
 const SettingsRouteChildren: SettingsRouteChildren = {
   SettingsDisplayRoute: SettingsDisplayRoute,
   SettingsNotificationRoute: SettingsNotificationRoute,
+  SettingsRecordingRoute: SettingsRecordingRoute,
   SettingsSoundRoute: SettingsSoundRoute,
   SettingsVibrationRoute: SettingsVibrationRoute,
   SettingsIndexRoute: SettingsIndexRoute,
