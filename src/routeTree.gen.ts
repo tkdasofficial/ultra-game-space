@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as SettingsIndexRouteImport } from './routes/settings.index'
 import { Route as SettingsDisplayRouteImport } from './routes/settings.display'
+import { Route as SettingsNotificationRouteImport } from './routes/settings.notification'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -34,16 +35,23 @@ const SettingsDisplayRoute = SettingsDisplayRouteImport.update({
   path: '/display',
   getParentRoute: () => SettingsRoute,
 } as any)
+const SettingsNotificationRoute = SettingsNotificationRouteImport.update({
+  id: '/notification',
+  path: '/notification',
+  getParentRoute: () => SettingsRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/settings': typeof SettingsRouteWithChildren
   '/settings/display': typeof SettingsDisplayRoute
+  '/settings/notification': typeof SettingsNotificationRoute
   '/settings/': typeof SettingsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/settings/display': typeof SettingsDisplayRoute
+  '/settings/notification': typeof SettingsNotificationRoute
   '/settings': typeof SettingsIndexRoute
 }
 export interface FileRoutesById {
@@ -51,14 +59,26 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/settings': typeof SettingsRouteWithChildren
   '/settings/display': typeof SettingsDisplayRoute
+  '/settings/notification': typeof SettingsNotificationRoute
   '/settings/': typeof SettingsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/settings' | '/settings/display' | '/settings/'
+  fullPaths:
+    | '/'
+    | '/settings'
+    | '/settings/display'
+    | '/settings/notification'
+    | '/settings/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/settings/display' | '/settings'
-  id: '__root__' | '/' | '/settings' | '/settings/display' | '/settings/'
+  to: '/' | '/settings/display' | '/settings/notification' | '/settings'
+  id:
+    | '__root__'
+    | '/'
+    | '/settings'
+    | '/settings/display'
+    | '/settings/notification'
+    | '/settings/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -96,16 +116,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SettingsDisplayRouteImport
       parentRoute: typeof SettingsRoute
     }
+    '/settings/notification': {
+      id: '/settings/notification'
+      path: '/notification'
+      fullPath: '/settings/notification'
+      preLoaderRoute: typeof SettingsNotificationRouteImport
+      parentRoute: typeof SettingsRoute
+    }
   }
 }
 
 interface SettingsRouteChildren {
   SettingsDisplayRoute: typeof SettingsDisplayRoute
+  SettingsNotificationRoute: typeof SettingsNotificationRoute
   SettingsIndexRoute: typeof SettingsIndexRoute
 }
 
 const SettingsRouteChildren: SettingsRouteChildren = {
   SettingsDisplayRoute: SettingsDisplayRoute,
+  SettingsNotificationRoute: SettingsNotificationRoute,
   SettingsIndexRoute: SettingsIndexRoute,
 }
 
