@@ -70,20 +70,20 @@ function Index() {
         }}
       />
 
-      <main className="relative flex h-full flex-col px-[3.5vh] py-[2.6vh]">
+      <main className="relative flex h-full flex-col px-[3.5cqh] py-[2.6cqh]">
         {/* Header */}
         <header className="flex shrink-0 items-center justify-between">
-          <div className="flex items-center gap-[1.8vh]">
+          <div className="flex items-center gap-[1.8cqh]">
             <span
               aria-hidden
-              className="block h-[3.4vh] w-[3.4vh] bg-primary"
+              className="block h-[3.4cqh] w-[3.4cqh] bg-primary"
               style={{
                 clipPath: "polygon(0 42%, 62% 0, 100% 20%, 24% 100%, 0 100%)",
                 boxShadow: "var(--glow-red)",
               }}
             />
             <h1
-              className="font-display text-[3.1vh] font-bold tracking-[0.06em] text-foreground"
+              className="font-display text-[3.1cqh] font-bold tracking-[0.06em] text-foreground"
               style={{ fontFamily: "var(--font-display)" }}
             >
               ULTRA GAME SPACE
@@ -92,34 +92,34 @@ function Index() {
           <button
             type="button"
             aria-label="Settings"
-            className="clip-notch flex h-[5.4vh] w-[5.4vh] items-center justify-center border border-border bg-panel-2 text-foreground transition-colors hover:border-primary hover:text-primary"
+            className="clip-notch flex h-[5.4cqh] w-[5.4cqh] items-center justify-center border border-border bg-panel-2 text-foreground transition-colors hover:border-primary hover:text-primary"
           >
-            <Settings className="h-[2.6vh] w-[2.6vh]" />
+            <Settings className="h-[2.6cqh] w-[2.6cqh]" />
           </button>
         </header>
 
         {/* Body */}
-        <section className="mt-[2.4vh] flex min-h-0 flex-1 gap-[3vh]">
+        <section className="mt-[2.4cqh] flex min-h-0 flex-1 gap-[3cqh]">
           {/* Stats panel */}
-          <div className="clip-notch flex w-[34%] flex-col justify-between border border-border bg-panel px-[2.2vh] py-[2vh]">
+          <div className="clip-notch flex w-[34%] flex-col justify-between border border-border bg-panel px-[2.2cqh] py-[2cqh]">
             {stats.map((s) => (
-              <div key={s.label} className="flex items-center gap-[1.8vh]">
-                <span className="clip-notch flex h-[5.2vh] w-[5.2vh] shrink-0 items-center justify-center border border-primary/60 bg-panel-2 text-primary">
-                  <s.icon className="h-[2.4vh] w-[2.4vh]" />
+              <div key={s.label} className="flex items-center gap-[1.8cqh]">
+                <span className="clip-notch flex h-[5.2cqh] w-[5.2cqh] shrink-0 items-center justify-center border border-primary/60 bg-panel-2 text-primary">
+                  <s.icon className="h-[2.4cqh] w-[2.4cqh]" />
                 </span>
                 <div className="min-w-0 flex-1">
                   <div className="flex items-baseline justify-between">
                     <span
-                      className="text-[1.9vh] font-semibold tracking-[0.08em] text-foreground"
+                      className="text-[1.9cqh] font-semibold tracking-[0.08em] text-foreground"
                       style={{ fontFamily: "var(--font-display)" }}
                     >
                       {s.label}
                     </span>
-                    <span className="text-[1.8vh] font-semibold text-foreground/90">
+                    <span className="text-[1.8cqh] font-semibold text-foreground/90">
                       {s.value}
                     </span>
                   </div>
-                  <div className="mt-[0.9vh] h-[0.9vh] w-full rounded-full bg-track">
+                  <div className="mt-[0.9cqh] h-[0.9cqh] w-full rounded-full bg-track">
                     <div
                       className="h-full rounded-full"
                       style={{
@@ -136,14 +136,14 @@ function Index() {
 
           {/* Carousel */}
           <div className="relative flex flex-1 flex-col items-center justify-center">
-            <div className="flex w-full items-center justify-between gap-[1vh]">
+            <div className="flex w-full items-center justify-between gap-[1cqh]">
               <button
                 type="button"
                 aria-label="Previous game"
                 onClick={() => setActive(prev)}
                 className="text-muted-foreground transition-colors hover:text-primary"
               >
-                <ChevronLeft className="h-[3.4vh] w-[3.4vh]" />
+                <ChevronLeft className="h-[3.4cqh] w-[3.4cqh]" />
               </button>
 
               {[prev, active, next].map((i, pos) => {
@@ -154,16 +154,16 @@ function Index() {
                     type="button"
                     key={`${g.name}-${pos}`}
                     onClick={() => setActive(i)}
-                    className="flex flex-col items-center gap-[1.4vh]"
+                    className="flex flex-col items-center gap-[1.4cqh]"
                   >
                     <span
                       className="relative flex items-center justify-center rounded-full"
                       style={{
-                        width: isActive ? "26vh" : "18vh",
-                        height: isActive ? "26vh" : "18vh",
+                        width: isActive ? "26cqh" : "18cqh",
+                        height: isActive ? "26cqh" : "18cqh",
                         border: `2px solid ${isActive ? "var(--primary)" : "color-mix(in oklab, var(--primary) 45%, transparent)"}`,
                         boxShadow: isActive ? "var(--glow-red-lg)" : "var(--glow-red)",
-                        padding: isActive ? "1.4vh" : "0.9vh",
+                        padding: isActive ? "1.4cqh" : "0.9cqh",
                       }}
                     >
                       <img
@@ -177,7 +177,7 @@ function Index() {
                       />
                     </span>
                     {!isActive && (
-                      <span className="text-[1.9vh] text-muted-foreground">{g.name}</span>
+                      <span className="text-[1.9cqh] text-muted-foreground">{g.name}</span>
                     )}
                   </button>
                 );
@@ -189,32 +189,32 @@ function Index() {
                 onClick={() => setActive(next)}
                 className="text-muted-foreground transition-colors hover:text-primary"
               >
-                <ChevronRight className="h-[3.4vh] w-[3.4vh]" />
+                <ChevronRight className="h-[3.4cqh] w-[3.4cqh]" />
               </button>
             </div>
 
             <h2
-              className="mt-[2.4vh] text-[3.6vh] font-bold uppercase tracking-[0.05em] text-foreground"
+              className="mt-[2.4cqh] text-[3.6cqh] font-bold uppercase tracking-[0.05em] text-foreground"
               style={{ fontFamily: "var(--font-display)" }}
             >
               {games[active].name}
             </h2>
             <span
-              className="mt-[1vh] block h-[0.5vh] w-[9vh] rounded-full bg-primary"
+              className="mt-[1cqh] block h-[0.5cqh] w-[9cqh] rounded-full bg-primary"
               style={{ boxShadow: "var(--glow-red)" }}
             />
           </div>
         </section>
 
         {/* Footer actions */}
-        <footer className="mt-[2.4vh] flex shrink-0 items-center gap-[2.4vh]">
+        <footer className="mt-[2.4cqh] flex shrink-0 items-center gap-[2.4cqh]">
           <button
             type="button"
-            className="clip-tab-l flex h-[8vh] w-[30%] items-center justify-center gap-[1.6vh] border border-border bg-panel text-foreground transition-colors hover:border-primary"
+            className="clip-tab-l flex h-[8cqh] w-[30%] items-center justify-center gap-[1.6cqh] border border-border bg-panel text-foreground transition-colors hover:border-primary"
           >
-            <Gauge className="h-[3vh] w-[3vh] text-primary" />
+            <Gauge className="h-[3cqh] w-[3cqh] text-primary" />
             <span
-              className="text-[2vh] font-semibold tracking-[0.08em]"
+              className="text-[2cqh] font-semibold tracking-[0.08em]"
               style={{ fontFamily: "var(--font-display)" }}
             >
               PERFORMANCE MODE
@@ -223,11 +223,11 @@ function Index() {
 
           <button
             type="button"
-            className="clip-hex flex h-[9.4vh] flex-1 items-center justify-center text-primary-foreground"
+            className="clip-hex flex h-[9.4cqh] flex-1 items-center justify-center text-primary-foreground"
             style={{ background: "var(--gradient-red)", boxShadow: "var(--glow-red-lg)" }}
           >
             <span
-              className="text-[3.2vh] font-bold tracking-[0.06em]"
+              className="text-[3.2cqh] font-bold tracking-[0.06em]"
               style={{ fontFamily: "var(--font-display)" }}
             >
               BOOST NOW
@@ -236,11 +236,11 @@ function Index() {
 
           <button
             type="button"
-            className="clip-tab-r flex h-[8vh] w-[30%] items-center justify-center gap-[1.6vh] border border-border bg-panel text-foreground transition-colors hover:border-primary"
+            className="clip-tab-r flex h-[8cqh] w-[30%] items-center justify-center gap-[1.6cqh] border border-border bg-panel text-foreground transition-colors hover:border-primary"
           >
-            <Gamepad2 className="h-[3vh] w-[3vh] text-primary" />
+            <Gamepad2 className="h-[3cqh] w-[3cqh] text-primary" />
             <span
-              className="text-[2vh] font-semibold tracking-[0.08em]"
+              className="text-[2cqh] font-semibold tracking-[0.08em]"
               style={{ fontFamily: "var(--font-display)" }}
             >
               GAME LOBBY
