@@ -148,7 +148,7 @@ function Index() {
 
               {[prev, active, next].map((i, pos) => {
                 const isActive = pos === 1;
-                const g = games[i];
+                const g = games[i]!;
                 return (
                   <button
                     type="button"
@@ -197,7 +197,7 @@ function Index() {
               className="mt-[2.4cqh] text-[3.6cqh] font-bold uppercase tracking-[0.05em] text-foreground"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              {games[active].name}
+              {games[active]!.name}
             </h2>
             <span
               className="mt-[1cqh] block h-[0.5cqh] w-[9cqh] rounded-full bg-primary"
