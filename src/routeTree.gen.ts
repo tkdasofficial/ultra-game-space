@@ -10,33 +10,96 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as SettingsIndexRouteImport } from './routes/settings.index'
+import { Route as SettingsDisplayRouteImport } from './routes/settings.display'
+import { Route as SettingsNotificationRouteImport } from './routes/settings.notification'
+import { Route as SettingsVibrationRouteImport } from './routes/settings.vibration'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsIndexRoute = SettingsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => SettingsRoute,
+} as any)
+const SettingsDisplayRoute = SettingsDisplayRouteImport.update({
+  id: '/display',
+  path: '/display',
+  getParentRoute: () => SettingsRoute,
+} as any)
+const SettingsNotificationRoute = SettingsNotificationRouteImport.update({
+  id: '/notification',
+  path: '/notification',
+  getParentRoute: () => SettingsRoute,
+} as any)
+const SettingsVibrationRoute = SettingsVibrationRouteImport.update({
+  id: '/vibration',
+  path: '/vibration',
+  getParentRoute: () => SettingsRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/settings': typeof SettingsRouteWithChildren
+  '/settings/display': typeof SettingsDisplayRoute
+  '/settings/notification': typeof SettingsNotificationRoute
+  '/settings/vibration': typeof SettingsVibrationRoute
+  '/settings/': typeof SettingsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/settings/display': typeof SettingsDisplayRoute
+  '/settings/notification': typeof SettingsNotificationRoute
+  '/settings/vibration': typeof SettingsVibrationRoute
+  '/settings': typeof SettingsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/settings': typeof SettingsRouteWithChildren
+  '/settings/display': typeof SettingsDisplayRoute
+  '/settings/notification': typeof SettingsNotificationRoute
+  '/settings/vibration': typeof SettingsVibrationRoute
+  '/settings/': typeof SettingsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/settings'
+    | '/settings/display'
+    | '/settings/notification'
+    | '/settings/vibration'
+    | '/settings/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/settings/display'
+    | '/settings/notification'
+    | '/settings/vibration'
+    | '/settings'
+  id:
+    | '__root__'
+    | '/'
+    | '/settings'
+    | '/settings/display'
+    | '/settings/notification'
+    | '/settings/vibration'
+    | '/settings/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  SettingsRoute: typeof SettingsRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +111,65 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings/': {
+      id: '/settings/'
+      path: '/'
+      fullPath: '/settings/'
+      preLoaderRoute: typeof SettingsIndexRouteImport
+      parentRoute: typeof SettingsRoute
+    }
+    '/settings/display': {
+      id: '/settings/display'
+      path: '/display'
+      fullPath: '/settings/display'
+      preLoaderRoute: typeof SettingsDisplayRouteImport
+      parentRoute: typeof SettingsRoute
+    }
+    '/settings/notification': {
+      id: '/settings/notification'
+      path: '/notification'
+      fullPath: '/settings/notification'
+      preLoaderRoute: typeof SettingsNotificationRouteImport
+      parentRoute: typeof SettingsRoute
+    }
+    '/settings/vibration': {
+      id: '/settings/vibration'
+      path: '/vibration'
+      fullPath: '/settings/vibration'
+      preLoaderRoute: typeof SettingsVibrationRouteImport
+      parentRoute: typeof SettingsRoute
+    }
   }
 }
 
+interface SettingsRouteChildren {
+  SettingsDisplayRoute: typeof SettingsDisplayRoute
+  SettingsNotificationRoute: typeof SettingsNotificationRoute
+  SettingsVibrationRoute: typeof SettingsVibrationRoute
+  SettingsIndexRoute: typeof SettingsIndexRoute
+}
+
+const SettingsRouteChildren: SettingsRouteChildren = {
+  SettingsDisplayRoute: SettingsDisplayRoute,
+  SettingsNotificationRoute: SettingsNotificationRoute,
+  SettingsVibrationRoute: SettingsVibrationRoute,
+  SettingsIndexRoute: SettingsIndexRoute,
+}
+
+const SettingsRouteWithChildren = SettingsRoute._addFileChildren(
+  SettingsRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  SettingsRoute: SettingsRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
