@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import {
   Settings,
@@ -89,13 +89,14 @@ function Index() {
               ULTRA GAME SPACE
             </h1>
           </div>
-          <button
-            type="button"
+          <Link
+            to="/settings/display"
             aria-label="Settings"
             className="clip-notch flex h-[5.4cqh] w-[5.4cqh] items-center justify-center border border-border bg-panel-2 text-foreground transition-colors hover:border-primary hover:text-primary"
           >
             <Settings className="h-[2.6cqh] w-[2.6cqh]" />
-          </button>
+          </Link>
+
         </header>
 
         {/* Body */}
