@@ -134,6 +134,7 @@
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+  container-type: size;
 }
 
 @media (orientation: portrait) {
