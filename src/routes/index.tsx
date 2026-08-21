@@ -101,21 +101,21 @@ function Index() {
         {/* Body */}
         <section className="mt-[2.4cqh] flex min-h-0 flex-1 gap-[3cqh]">
           {/* Stats panel */}
-          <div className="clip-notch flex w-[34%] flex-col justify-center gap-[2.2cqh] border border-border bg-panel px-[2.2cqh] py-[2cqh]">
+          <div className="clip-notch flex w-[34%] flex-col justify-between border border-border bg-panel px-[2.2cqh] py-[2cqh]">
             {stats.map((s) => (
               <div key={s.label} className="flex items-center gap-[1.8cqh]">
-                <span className="clip-notch flex h-[5.2cqh] w-[5.2cqh] shrink-0 items-center justify-center border border-primary/60 bg-panel-2 text-primary">
-                  <s.icon className="h-[2.4cqh] w-[2.4cqh]" />
+                <span className="clip-notch flex h-[7cqh] w-[7cqh] shrink-0 items-center justify-center border border-primary/60 bg-panel-2 text-primary">
+                  <s.icon className="h-[3.4cqh] w-[3.4cqh]" />
                 </span>
                 <div className="min-w-0 flex-1">
                   <div className="flex items-baseline justify-between">
                     <span
-                      className="text-[1.9cqh] font-semibold tracking-[0.08em] text-foreground"
+                      className="text-[2.4cqh] font-semibold tracking-[0.08em] text-foreground"
                       style={{ fontFamily: "var(--font-display)" }}
                     >
                       {s.label}
                     </span>
-                    <span className="text-[1.8cqh] font-semibold text-foreground/90">
+                    <span className="text-[2.3cqh] font-semibold text-foreground/90">
                       {s.value}
                     </span>
                   </div>
