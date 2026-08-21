@@ -53,6 +53,8 @@ const games = [
   { name: "Asphalt 9", img: asphalt },
 ];
 
+const modes = ["ECONOMY", "BALANCE", "ULTRA", "EXTREME"] as const;
+
 function Index() {
   const [active, setActive] = useState(1);
   const [mode, setMode] = useState<(typeof modes)[number]>("ECONOMY");
