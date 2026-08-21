@@ -209,18 +209,61 @@ function Index() {
 
         {/* Footer actions */}
         <footer className="mt-[2.4cqh] flex shrink-0 items-center gap-[2.4cqh]">
-          <button
-            type="button"
-            className="clip-tab-l flex h-[8cqh] w-[30%] items-center justify-center gap-[1.6cqh] border border-border bg-panel text-foreground transition-colors hover:border-primary"
-          >
-            <Gauge className="h-[3cqh] w-[3cqh] text-primary" />
-            <span
-              className="text-[2cqh] font-semibold tracking-[0.08em]"
-              style={{ fontFamily: "var(--font-display)" }}
+          <div className="relative w-[30%]">
+            {modeOpen && (
+              <div className="absolute bottom-[9.4cqh] left-0 z-10 w-full border border-border bg-panel p-[0.8cqh]">
+                {modes.map((m) => {
+                  const on = m === mode;
+                  return (
+                    <button
+                      key={m}
+                      type="button"
+                      onClick={() => {
+                        setMode(m);
+                        setModeOpen(false);
+                      }}
+                      className={`mb-[0.5cqh] flex w-full items-center justify-between px-[1.6cqh] py-[1.1cqh] text-[2cqh] font-semibold tracking-[0.08em] transition-colors last:mb-0 ${
+                        on
+                          ? "bg-primary text-primary-foreground"
+                          : "bg-panel-2 text-muted-foreground hover:text-foreground"
+                      }`}
+                      style={{
+                        fontFamily: "var(--font-display)",
+                        ...(on ? { boxShadow: "var(--glow-red)" } : {}),
+                      }}
+                    >
+                      {m}
+                    </button>
+                  );
+                })}
+              </div>
+            )}
+            <button
+              type="button"
+              aria-expanded={modeOpen}
+              onClick={() => setModeOpen((o) => !o)}
+              className={`clip-tab-l flex h-[8cqh] w-full items-center justify-center gap-[1.6cqh] transition-colors ${
+                boosted
+                  ? "text-primary-foreground"
+                  : "border border-border bg-panel text-foreground hover:border-primary"
+              }`}
+              style={
+                boosted
+                  ? { background: "var(--gradient-red)", boxShadow: "var(--glow-red-lg)" }
+                  : undefined
+              }
             >
-              PERFORMANCE MODE
-            </span>
-          </button>
+              <Gauge
+                className={`h-[3cqh] w-[3cqh] ${boosted ? "text-primary-foreground" : "text-primary"}`}
+              />
+              <span
+                className="text-[2cqh] font-semibold tracking-[0.08em]"
+                style={{ fontFamily: "var(--font-display)" }}
+              >
+                {boosted ? mode : "PERFORMANCE MODE"}
+              </span>
+            </button>
+          </div>
 
           <button
             type="button"
@@ -235,8 +278,8 @@ function Index() {
             </span>
           </button>
 
-          <button
-            type="button"
+          <Link
+            to="/lobby"
             className="clip-tab-r flex h-[8cqh] w-[30%] items-center justify-center gap-[1.6cqh] border border-border bg-panel text-foreground transition-colors hover:border-primary"
           >
             <Gamepad2 className="h-[3cqh] w-[3cqh] text-primary" />
@@ -246,7 +289,7 @@ function Index() {
             >
               GAME LOBBY
             </span>
-          </button>
+          </Link>
         </footer>
       </main>
     </div>
