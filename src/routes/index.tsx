@@ -53,8 +53,13 @@ const games = [
   { name: "Asphalt 9", img: asphalt },
 ];
 
+const modes = ["ECONOMY", "BALANCE", "ULTRA", "EXTREME"] as const;
+
 function Index() {
   const [active, setActive] = useState(1);
+  const [mode, setMode] = useState<(typeof modes)[number]>("ECONOMY");
+  const [modeOpen, setModeOpen] = useState(false);
+  const boosted = mode !== "ECONOMY";
   const prev = (active + games.length - 1) % games.length;
   const next = (active + 1) % games.length;
 
