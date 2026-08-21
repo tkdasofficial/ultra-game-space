@@ -101,7 +101,7 @@ function Index() {
         {/* Body */}
         <section className="mt-[2.4cqh] flex min-h-0 flex-1 gap-[3cqh]">
           {/* Stats panel */}
-          <div className="clip-notch flex w-[34%] flex-col justify-between border border-border bg-panel px-[2.2cqh] py-[2cqh]">
+          <div className="clip-notch flex w-[34%] flex-col justify-center gap-[2.2cqh] border border-border bg-panel px-[2.2cqh] py-[2cqh]">
             {stats.map((s) => (
               <div key={s.label} className="flex items-center gap-[1.8cqh]">
                 <span className="clip-notch flex h-[5.2cqh] w-[5.2cqh] shrink-0 items-center justify-center border border-primary/60 bg-panel-2 text-primary">
